@@ -21,11 +21,11 @@ jobs:
       uses: ixxeL-actions/snyk-iac@main
       with:
         api-token: '${{ secrets.SNYK_TOKEN }}'
-        format: 'json'
+        format: ''
         threshold: 'low'
         depth: ''
         org: "ixxel2097"
         output-json: ''    
         output-sarif: ''
-        exit-zero: 'false'      
+        exit-zero: 'true'      
         working-dir: '.'
