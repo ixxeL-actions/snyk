@@ -57,7 +57,7 @@ runs:
           echo -e "${RED}[ FAIL ] > Snyk auth failed.${BLANK}"
           exit ${EXIT}
         fi
-        echo -e "${YELLOW}[ EXECUTING ] > Executing Snyk iac test for org ${{ inputs.org }} on ${{ inputs.working-dir }} with threshold ${{ inputs.threshold }}.${BLANK}"
+        echo -e "${YELLOW}[ EXECUTING ] > Executing Snyk IaC test for org ${{ inputs.org }} on ${{ inputs.working-dir }} with threshold ${{ inputs.threshold }}.${BLANK}"
 
         if [[ ${{ inputs.format }} = "json" ]]
         then
@@ -80,6 +80,7 @@ runs:
         then
           OUTPUT="--json-file-output=${{ inputs.output-json }}"
         elif [[ -n ${{ inputs.output-sarif }} ]]
+        then
           OUTPUT="--json-file-output=${{ inputs.output-sarif }}"
         else
           OUTPUT=""
