@@ -23,7 +23,7 @@ jobs:
         api-token: '${{ secrets.SNYK_TOKEN }}'
         format: '""'
         threshold: 'low'
-        depth: '""'
+        depth: ''
         org: "ixxel2097"
         output-json: '""'    
         output-sarif: '""'
