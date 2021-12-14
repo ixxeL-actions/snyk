@@ -54,7 +54,7 @@ runs:
         then
           echo -e "${GREEN}[ SUCCESS ] > Snyk auth succeeded.${BLANK}"
         else
-          echo -e "${RED}[ FAIL ] > Bandit scan failed.${BLANK}"
+          echo -e "${RED}[ FAIL ] > Snyk auth failed.${BLANK}"
           exit ${EXIT}
         fi
         echo -e "${YELLOW}[ EXECUTING ] > Executing Snyk iac test for org ${{ inputs.org }} on ${{ inputs.working-dir }} with threshold ${{ inputs.threshold }}.${BLANK}"

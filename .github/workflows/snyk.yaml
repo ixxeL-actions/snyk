@@ -20,7 +20,7 @@ jobs:
     - name: Snyk IaC security scan
       uses: ixxeL-actions/snyk-iac@main
       with:
-        api-token:
+        api-token: '${{ secrets.SNYK_TOKEN }}'
         format: '""'
         threshold: 'low'
         depth: '""'
