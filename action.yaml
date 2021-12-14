@@ -92,7 +92,8 @@ runs:
           OUTPUT=""
         fi
   
-        snyk iac test --severity-threshold=${{ inputs.threshold }} \
+        snyk iac test ${{ inputs.working-dir }} \
+                      --severity-threshold=${{ inputs.threshold }} \
                       --org=${{ inputs.org }} \
                       ${DEPTH} \
                       ${OUTPUT} \
@@ -101,10 +102,10 @@ runs:
         EXIT_CODE="${PIPESTATUS[0]}"
         if [[ ${EXIT_CODE} -ne 0 && ${{ inputs.exit-zero }} != true ]]
         then
-          echo -e "${RED}[ FAIL ] > Bandit scan failed.${BLANK}"
+          echo -e "${RED}[ FAIL ] > Snyk IaC scan failed.${BLANK}"
           exit ${EXIT_CODE}
         else
-          echo -e "${GREEN}[ SUCCESS ] > Bandit scan succeeded.${BLANK}"
+          echo -e "${GREEN}[ SUCCESS ] > Snyk IaC scan succeeded.${BLANK}"
         fi
       shell: bash
       env:
