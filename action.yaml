@@ -44,6 +44,7 @@ runs:
     - id: snyk-iac
       run: |
         set +e
+        export TERM=xterm-color
         echo -e "${BLUE}[ STEP - IaC security scan ] > IaC code security scan with Snyk.${BLANK}"
         echo -e "${CYAN}[ INFO ] > Snyk version.${BLANK}"
         snyk --version
