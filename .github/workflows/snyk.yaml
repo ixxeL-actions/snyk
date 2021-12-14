@@ -21,7 +21,7 @@ jobs:
       uses: ixxeL-actions/snyk-iac@main
       with:
         api-token: '${{ secrets.SNYK_TOKEN }}'
-        format: ''
+        format: 'json'
         threshold: 'low'
         depth: ''
         org: "ixxel2097"
