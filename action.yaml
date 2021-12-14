@@ -69,17 +69,17 @@ runs:
           FORMAT=""
         fi
 
-        if [[ -z ${{ inputs.depth }} ]]
+        if [[ -z "${{ inputs.depth }}" ]]
         then
           DEPTH="--detection-depth=${{ inputs.depth }}"
         else
           DEPTH=""
         fi
 
-        if [[ -n ${{ inputs.output-json }} ]]
+        if [[ -n "${{ inputs.output-json }}" ]]
         then
           OUTPUT="--json-file-output=${{ inputs.output-json }}"
-        elif [[ -n ${{ inputs.output-sarif }} ]]
+        elif [[ -n "${{ inputs.output-sarif }}" ]]
         then
           OUTPUT="--json-file-output=${{ inputs.output-sarif }}"
         else
@@ -93,7 +93,7 @@ runs:
                       ${FORMAT}
 
         EXIT_CODE="${PIPESTATUS[0]}"
-        if [[ ${EXIT_CODE} -ne 0 && ${{ inputs.exit-zero }} != true]]
+        if [[ ${EXIT_CODE} -ne 0 && ${{ inputs.exit-zero }} != true ]]
         then
           echo -e "${RED}[ FAIL ] > Bandit scan failed.${BLANK}"
           exit ${EXIT_CODE}
