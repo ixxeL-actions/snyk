@@ -59,10 +59,10 @@ runs:
         fi
         echo -e "${YELLOW}[ EXECUTING ] > Executing Snyk IaC test for org ${{ inputs.org }} on ${{ inputs.working-dir }} with threshold ${{ inputs.threshold }}.${BLANK}"
 
-        if [[ ${{ inputs.format }} = "json" ]]
+        if [[ "${{ inputs.format }}" = "json" ]]
         then
           FORMAT="--json | jq -C"
-        elif [[ ${{ inputs.format }} = "sarif" ]]
+        elif [[ "${{ inputs.format }}" = "sarif" ]]
         then
           FORMAT="--sarif"
         else
