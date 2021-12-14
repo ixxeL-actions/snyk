@@ -62,7 +62,7 @@ runs:
         if [[ "${{ inputs.format }}" = "json" ]]
         then
           echo -e "${CYAN}[ INFO ] > Using JSON format.${BLANK}"
-          FORMAT="--json | jq"
+          FORMAT="--json"
         elif [[ "${{ inputs.format }}" = "sarif" ]]
         then
           echo -e "${CYAN}[ INFO ] > Using SARIF format.${BLANK}"
@@ -92,12 +92,22 @@ runs:
           OUTPUT=""
         fi
   
-        snyk iac test ${{ inputs.working-dir }} \
-                      --severity-threshold=${{ inputs.threshold }} \
-                      --org=${{ inputs.org }} \
-                      ${DEPTH} \
-                      ${OUTPUT} \
-                      ${FORMAT}
+        if [[ -z "${FORMAT}" ]]
+        then
+          snyk iac test ${{ inputs.working-dir }} \
+                        --severity-threshold=${{ inputs.threshold }} \
+                        --org=${{ inputs.org }} \
+                        ${DEPTH} \
+                        ${OUTPUT} \
+                        ${FORMAT}
+        else
+          snyk iac test ${{ inputs.working-dir }} \
+                        --severity-threshold=${{ inputs.threshold }} \
+                        --org=${{ inputs.org }} \
+                        ${DEPTH} \
+                        ${OUTPUT} \
+                        ${FORMAT} | jq -C
+        fi
 
         EXIT_CODE="${PIPESTATUS[0]}"
         if [[ ${EXIT_CODE} -ne 0 && ${{ inputs.exit-zero }} != true ]]
