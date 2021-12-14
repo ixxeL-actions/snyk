@@ -69,7 +69,7 @@ runs:
           FORMAT=""
         fi
 
-        if [[ -z "${{ inputs.depth }}" ]]
+        if [[ -n "${{ inputs.depth }}" ]]
         then
           DEPTH="--detection-depth=${{ inputs.depth }}"
         else
