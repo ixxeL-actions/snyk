@@ -61,16 +61,20 @@ runs:
 
         if [[ "${{ inputs.format }}" = "json" ]]
         then
+          echo -e "${CYAN}[ INFO ] > Using JSON format.${BLANK}"
           FORMAT="--json | jq -C"
         elif [[ "${{ inputs.format }}" = "sarif" ]]
         then
+          echo -e "${CYAN}[ INFO ] > Using SARIF format.${BLANK}"
           FORMAT="--sarif"
         else
+          echo -e "${CYAN}[ INFO ] > Using DEFAULT format.${BLANK}"
           FORMAT=""
         fi
 
         if [[ -n "${{ inputs.depth }}" ]]
         then
+          echo -e "${CYAN}[ INFO ] > Using depth ${{ inputs.depth }}.${BLANK}"
           DEPTH="--detection-depth=${{ inputs.depth }}"
         else
           DEPTH=""
@@ -78,9 +82,11 @@ runs:
 
         if [[ -n "${{ inputs.output-json }}" ]]
         then
+          echo -e "${CYAN}[ INFO ] > output JSON file to ${{ inputs.output-json }}.${BLANK}"
           OUTPUT="--json-file-output=${{ inputs.output-json }}"
         elif [[ -n "${{ inputs.output-sarif }}" ]]
         then
+          echo -e "${CYAN}[ INFO ] > output SARIF file to ${{ inputs.output-sarif }}.${BLANK}"
           OUTPUT="--json-file-output=${{ inputs.output-sarif }}"
         else
           OUTPUT=""

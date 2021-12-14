@@ -27,5 +27,5 @@ jobs:
         org: "ixxel2097"
         output-json: ''    
         output-sarif: ''
-        exit-zero: 'true'      
+        exit-zero: 'false'      
         working-dir: '.'
