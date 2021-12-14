@@ -62,7 +62,7 @@ runs:
         if [[ "${{ inputs.format }}" = "json" ]]
         then
           echo -e "${CYAN}[ INFO ] > Using JSON format.${BLANK}"
-          FORMAT="--json | jq -C"
+          FORMAT="--json | jq"
         elif [[ "${{ inputs.format }}" = "sarif" ]]
         then
           echo -e "${CYAN}[ INFO ] > Using SARIF format.${BLANK}"
