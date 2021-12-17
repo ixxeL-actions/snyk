@@ -1,18 +1,19 @@
+---
 name: Snyk-iac-CI
 on:
   push:
     branches:
-      - main
+    - main
   pull_request:
     branches:
-      - main
+    - main
 jobs:
   test:
     strategy:
       matrix:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
-    container: 
+    container:
       image: ixxel/unit-tests-alpine:latest
     steps:
     - name: Git clone repo
@@ -20,12 +21,12 @@ jobs:
     - name: Snyk IaC security scan
       uses: ixxeL-actions/snyk-iac@main
       with:
-        api-token: '${{ secrets.SNYK_TOKEN }}'
+        api-token: ${{ secrets.SNYK_TOKEN }}
         format: ''
-        threshold: 'low'
+        threshold: low
         depth: ''
-        org: "ixxel2097"
-        output-json: ''    
+        org: ixxel2097
+        output-json: ''
         output-sarif: ''
-        exit-zero: 'true'      
-        working-dir: '.'
+        exit-zero: 'true'
+        working-dir: .
